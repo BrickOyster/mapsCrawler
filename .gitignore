@@ -2,6 +2,5 @@ img/
 *.jpg
 __pycache__/
 *.pyc
-*.txt
 Notes.md
-*NOT.py
+*NOT.*
