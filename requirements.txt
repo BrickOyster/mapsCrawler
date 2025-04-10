@@ -1,0 +1,12 @@
+torch==2.6.0
+torchvision==0.21.0
+opencv-python==4.11.0.86
+opencv-python-headless==4.11.0.86
+scikit-image==0.25.2
+scipy==1.15.2
+lmdb==1.6.2
+numpy==2.2.4
+Pillow==10.1.0
+six==1.16.0
+pyspellchecker==0.8.2
+deep-translator==1.11.4

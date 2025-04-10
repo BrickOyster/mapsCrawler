@@ -1,11 +1,10 @@
 from  deep_translator import GoogleTranslator
-import pkg_resources
 import numpy as np
 from my_profanity_check import predict, predict_prob
 from spellchecker import SpellChecker
 
 class LanguageProcessing:
-    def __init__(self, lang = ('english', 'en'), spell = 'eng'):
+    def __init__(self, lang = ('english', 'en')):
         """
         Class to process the text extracted from the images.
         Contains a module for language translation  to english and modules for vocabulary and grammar fixes
@@ -13,7 +12,7 @@ class LanguageProcessing:
         :param
         """
         self.language, self.language_code = lang
-        self.spell_tool = SpellChecker(language=spell)
+        self.spell_tool = SpellChecker(language=self.language_code)
         self.translator = GoogleTranslator(source='auto', target=self.language_code)
         
     def fix_spelling(self, text: str) -> str:
@@ -70,5 +69,6 @@ if __name__ == "__main__":
     text = "Bonjour tout le monde"
     translated_text = lp.translate_text(text, source_language='fr')
     print(f"Translated text: {translated_text}")
+    print(lp.fix_spelling(translated_text))
     # pc, cic = lp.do_profanity_check({"image1": "This is a test", "image2": "This is  fuck test"})
     # print(f"{pc} ,{cic}")
