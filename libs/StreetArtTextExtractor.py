@@ -81,25 +81,6 @@ class StreetArtTextExtractor:
                     results[imghash] = original_text
                     
         return results
-                    
-
-    def test_extract_text_with_easyocr(self, folder_path: str) -> Dict[str, str]:
-        """ $$ Has results but questionable $$
-        Extract text from all images in a folder using EasyOCR.
-        :param folder_path: Path to the folder containing images.
-        :return: Dictionary with hash of filenames as keys and extracted text as values.
-        """
-        results = {}
-        for filename in os.listdir(folder_path):
-            file_path = os.path.join(folder_path, filename)
-            if os.path.isfile(file_path) and filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff')):
-                image = cv2.imread(file_path) # Read image
-                if image is not None:
-                    result = self.reader.readtext(image,detail=0)
-                    # Join the results into a single string
-                    results[filename] = ' '.join(result)
-                    # hashlib.sha1(filename.encode(), usedforsecurity=False).hexdigest()
-        return results
     
 # Example usage
 if __name__ == "__main__":
