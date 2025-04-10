@@ -1,4 +1,0 @@
-easyocr==1.7.0
-opencv-python-headless==4.5.5.64
-language-tool-python==1.5.5
-pyspellchecker==0.7.2

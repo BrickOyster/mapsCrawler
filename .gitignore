@@ -1,6 +1,4 @@
 img/
-*.jpg
 __pycache__/
 *.pyc
-Notes.md
 *NOT.*

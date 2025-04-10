@@ -1,6 +1,6 @@
 # StreetArtTextExtractor
 
-StreetArtTextExtractor is a Python library designed to extract and process text from images, particularly for street art and similar use cases. It leverages EasyOCR for text recognition, OpenCV for image preprocessing, and additional tools for spelling and grammar correction.
+StreetArtTextExtractor is a Python library designed to extract and process text from images and categorize them based on text content, particularly for street art and similar use cases. It leverages EasyOCR for text recognition, OpenCV for image preprocessing, and additional tools for spelling correction.
 
 ## Features
 
@@ -8,26 +8,24 @@ StreetArtTextExtractor is a Python library designed to extract and process text 
 - **Image Preprocessing**: Enhance images for better OCR results with options like grayscale conversion, contrast adjustment, histogram equalization, Gaussian blur, and more.
 - **Batch Processing**: Process multiple images at once and extract text from each.
 - **Spelling Correction**: Automatically correct spelling errors in extracted text using PySpellChecker.
-- **Grammar Correction**: Improve grammar in extracted text using LanguageTool.
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/mapsCrawler.git
+git clone https://github.com/brickoyster/mapsCrawler.git
 cd mapsCrawler
 ```
 
-2. Install the requirements
-```bash
-pip install -r requirements.txt
-```
-
-3. Ensure you have the following installed:
+2. Ensure you have the following installed:
     - OpenCV (cv2)
     - EasyOCR
     - PySpellChecker
-    - LanguageTool Python API
+
+    Can be done with
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -41,12 +39,12 @@ import os
 # Initialize the extractor
 extractor = StreetArtTextExtractor.StreetArtTextExtractor()
 
-# Load images from a folder
+# Load images from a folder (ie img/)
 image_folder = "img/"
 images = [cv2.imread(os.path.join(image_folder, file)) for file in os.listdir(image_folder) if file.endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff'))]
 
 # Process images and extract text
-results = extractor.process_batch_of_images(images, preprocessing="grayscale, contrast", score_th=0.1)
+results = extractor.process_batch_of_images(images, preprocessing="contrast")
 
 # Print results
 for imghash, entry in results.items():
@@ -56,7 +54,6 @@ for imghash, entry in results.items():
 ## Preprocessing Options
 
 You can specify multiple preprocessing steps separated by commas. Available options:
-
 - **none**: No preprocessing.
 - **grayscale**: Convert the image to grayscale.
 - **contrast**: Adjust the image contrast.
@@ -69,7 +66,6 @@ You can specify multiple preprocessing steps separated by commas. Available opti
 ## Grammar and Spelling Correction
 
 The library includes methods to correct spelling and grammar in extracted text:
-
 - `fix_spelling(text: str) -> str`: Corrects spelling errors.
 - `fix_grammar(text: str) -> str`: Corrects grammar issues.
 
