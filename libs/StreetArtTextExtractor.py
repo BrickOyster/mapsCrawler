@@ -7,13 +7,12 @@ import numpy as np
 from torch.autograd import Variable
 
 # Craft bounding boxes detector
-from Craft.craft import CRAFT
-import Craft.craft_utils as craft_utils, Craft.imgproc as imgproc
+from .Craft.craft import CRAFT
+from .Craft import craft_utils as craft_utils, imgproc as imgproc
 
 # Pytorch crnn
-
-import Crnn.utils as crnn_utils, Crnn.dataset as crnn_dataset
-import Crnn.models.crnn as crnn_models
+from .Crnn import utils as crnn_utils, dataset as crnn_dataset
+from .Crnn.models import crnn as crnn_models
 
 from typing import Dict
 from collections import OrderedDict
@@ -190,6 +189,7 @@ class StreetArtTextExtractor:
 
                         # Store the recognized text in the results dictionary
                         results[imghash] = results.get(imghash, "") + f" {sim_pred.strip()}"
+                        print(f"\r Text extracted: {sim_pred.strip()[:30]}", end="")
                     #         results[imghash] = results.get(imghash, "") + f"|{sim_pred} / {''.join(result)}|"
                     #         # Test code
                     #         # Draw bounding boxes and recognized text on the image
